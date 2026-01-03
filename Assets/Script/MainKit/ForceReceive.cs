@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ForceReceive : MonoBehaviour
 {
     [SerializeField] float downForce = 2f;
@@ -7,26 +8,28 @@ public class ForceReceive : MonoBehaviour
     GroundCheckSensor groundCheckSensor;
     Rigidbody2D rb2D;
 
-    // float verticalVelocity;
-
-    // Vector2 Movement => new Vector2(rb2D.linearVelocityX, rb2D.linearVelocityY);
-
-
     void Start()
     {
-        groundCheckSensor = this.GetComponent<GroundCheckSensor>();
-        rb2D = this.GetComponent<Rigidbody2D>();
+        if (gameObject.tag == "Player")
+        {
+            groundCheckSensor = GetComponent<GroundCheckSensor>();
+        }
+
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        if (rb2D.linearVelocityY <= 0 && groundCheckSensor.isGrounded)
+        if (gameObject.tag == "Player")
         {
-            rb2D.linearVelocityY = 0;
-        }
-        else
-        {
-            rb2D.linearVelocityY += Physics2D.gravity.y * downForce * Time.fixedDeltaTime;
+            if (rb2D.linearVelocityY <= 0 && groundCheckSensor.isGrounded)
+            {
+                rb2D.linearVelocityY = 0;
+            }
+            else
+            {
+                rb2D.linearVelocityY += Physics2D.gravity.y * downForce * Time.fixedDeltaTime;
+            }
         }
         // Debug.Log(rb2D.linearVelocityY);
     }

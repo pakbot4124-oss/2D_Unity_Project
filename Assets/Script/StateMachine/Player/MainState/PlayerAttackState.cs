@@ -1,6 +1,4 @@
 
-using JetBrains.Annotations;
-
 public class PlayerAttackState : PlayerBaseState
 {
     readonly string AttackAnimationTag = "Attack";

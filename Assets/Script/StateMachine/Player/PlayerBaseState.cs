@@ -14,7 +14,7 @@ public abstract class PlayerBaseState : State
         if (stateMachine.InputReader.MovementDirection.x != 0)
         {
             float currentDirection = stateMachine.InputReader.MovementDirection.x < 0 ? -1 : 1;
-            Vector3 newLocalScale = new Vector3(currentDirection, 1f, 1f);
+            Vector3 newLocalScale = new(currentDirection, 1f, 1f);
             stateMachine.transform.localScale = newLocalScale;
         }
     }

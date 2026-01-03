@@ -7,7 +7,7 @@ public class AttackDealDame : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other == myCollider) { return; }
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             // Debug.Log(other.name);
             Health health = other.GetComponent<Health>();
