@@ -9,6 +9,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public InputReader InputReader { get; private set; }
     [field: SerializeField] public ForceReceive ForceReceive { get; private set; }
     [field: SerializeField] public GroundCheckSensor GroundCheckSensor { get; private set; }
+    [field: SerializeField] public SpotCheckSensor SpotCheckSensor { get; private set; }
+    [field: SerializeField] public WallCheckSensor WallCheckSensor { get; private set; }
     [field: SerializeField] public Attacks[] Attacks { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
 
@@ -30,12 +32,17 @@ public class PlayerStateMachine : StateMachine
     {
         Health.OnHurt += OnHurt;
         Health.OnDeath += OnDeath;
+        SpotCheckSensor.OnTouchSpot += OnTouchSpot;
+        WallCheckSensor.OnTouchWall += OnTouchWall;
     }
 
     void OnDisable()
     {
         Health.OnHurt -= OnHurt;
         Health.OnDeath -= OnDeath;
+        SpotCheckSensor.OnTouchSpot -= OnTouchSpot;
+        WallCheckSensor.OnTouchWall -= OnTouchWall;
+
     }
 
     public void ReturnLocomotion()
@@ -70,5 +77,16 @@ public class PlayerStateMachine : StateMachine
             SwitchState(new PlayerStartJumpState(this));
             return;
         }
+    }
+
+    public void OnTouchSpot()
+    {
+        SwitchState(new PlayerTouchSpotState(this));
+        return;
+    }
+    public void OnTouchWall()
+    {
+        SwitchState(new PlayerWallLedgeState(this));
+        return;
     }
 }

@@ -42,7 +42,7 @@ public class InputReader : MonoBehaviour, PlayerInput.IPlayerMovementActions
         if (context.started)
         {
             IsAttack = true;
-            Debug.Log("Attacks");
+            // Debug.Log("Attacks");
         }
     }
 
@@ -50,7 +50,7 @@ public class InputReader : MonoBehaviour, PlayerInput.IPlayerMovementActions
     {
         if (context.performed)
         {
-            Debug.Log("Roll");
+            // Debug.Log("Roll");
             RollEvent?.Invoke();
         }
     }

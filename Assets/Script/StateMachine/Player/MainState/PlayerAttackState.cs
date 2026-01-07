@@ -15,7 +15,6 @@ public class PlayerAttackState : PlayerBaseState
             currentAttackIndex = 0;
         }
         attack = attackComboList[currentAttackIndex];
-
     }
 
     public override void Enter()
