@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Ground
   - Spot
-  - 
+  - Wall
   - 
   - 
   - 
@@ -42,6 +42,27 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround_0
+    uniqueID: 1051708173
+    locked: 0
+  - name: BackGround_1
+    uniqueID: 146575429
+    locked: 0
+  - name: BackGround_2
+    uniqueID: 1242181351
+    locked: 0
+  - name: BackGround_3
+    uniqueID: 479729135
+    locked: 0
+  - name: BackGround_4
+    uniqueID: 2689514449
+    locked: 0
+  - name: ForceGround
+    uniqueID: 538329899
+    locked: 0
+  - name: FrontGround
+    uniqueID: 1230082415
     locked: 0
   m_RenderingLayers:
   - Default

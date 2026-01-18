@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovementState : PlayerBaseState
 {
@@ -21,7 +21,7 @@ public class PlayerMovementState : PlayerBaseState
         ChangeAttackState();
         SetAnimation(fixedDeltaTime);
         Rotation();
-        stateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed);
+        stateMachine.ForceReceive.MoveVelocity(GetDirByInput() * stateMachine.MoveSpeed, fixedDeltaTime);
     }
 
     public override void Tick(float deltaTime)

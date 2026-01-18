@@ -25,7 +25,7 @@ public class PlayerAttackState : PlayerBaseState
     public override void PhysicsTick(float fixedDeltaTime)
     {
         Rotation();
-        stateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, GetXDirection() * stateMachine.MoveSpeed / 11f);
+        //stateMachine.ForceReceive.MovePosition(fixedDeltaTime);
     }
 
     public override void Tick(float deltaTime)

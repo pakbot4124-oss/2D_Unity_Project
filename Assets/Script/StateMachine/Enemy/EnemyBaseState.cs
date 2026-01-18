@@ -14,7 +14,7 @@ public abstract class EnemyBaseState : State
     protected void Chasing(Transform target, float fixedDeltaTime)
     {
         Vector2 direction = (target.transform.position - enemyStateMachine.transform.position).normalized;
-        enemyStateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, direction * enemyStateMachine.MoveSpeed);
+        //enemyStateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, direction * enemyStateMachine.MoveSpeed);
     }
 
     protected void RotationToTarget()

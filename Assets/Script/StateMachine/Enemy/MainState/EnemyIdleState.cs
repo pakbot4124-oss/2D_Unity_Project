@@ -15,7 +15,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void PhysicsTick(float fixedDeltaTime)
     {
-        enemyStateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, Vector2.zero);
+        //enemyStateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, Vector2.zero);
     }
 
     public override void Tick(float deltaTime)

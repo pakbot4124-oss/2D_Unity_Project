@@ -17,15 +17,17 @@ public class PlayerInAirState : PlayerBaseState
 
     public override void PhysicsTick(float fixedDeltaTime)
     {
-
-
         Rotation();
-        stateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed / 1.5f);
+        stateMachine.ForceReceive.MoveVelocity(GetDirByInput() * stateMachine.MoveSpeed, fixedDeltaTime);
+        if (stateMachine.GroundCheckSensor.isGrounded)
+        {
+            stateMachine.ReturnLocomotion();
+        }
     }
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.Rigidbody2D.linearVelocityY <= 0 && stateMachine.GroundCheckSensor.isGrounded)
+        if (stateMachine.GroundCheckSensor.isGrounded)
         {
             stateMachine.ReturnLocomotion();
         }

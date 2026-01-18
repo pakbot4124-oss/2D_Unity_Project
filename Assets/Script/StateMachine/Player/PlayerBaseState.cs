@@ -19,6 +19,17 @@ public abstract class PlayerBaseState : State
         }
     }
 
+
+    public Vector2 GetDirByInput()
+    {
+        if(stateMachine.InputReader.MovementDirection == Vector2.zero)
+        {
+            return Vector2.zero;
+        }
+
+        return stateMachine.InputReader.MovementDirection.x < 0 ? Vector2.left : Vector2.right;
+    }
+
     public Vector2 GetXDirection()
     {
         if (stateMachine.transform.localScale.x == -1)

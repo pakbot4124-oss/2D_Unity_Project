@@ -21,7 +21,7 @@ public class EnemyAttackState : EnemyBaseState
     public override void PhysicsTick(float fixedDeltaTime)
     {
         RotationToTarget();
-        enemyStateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, GetXDirection() * enemyStateMachine.MoveSpeed / 12f);
+        //enemyStateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, GetXDirection() * enemyStateMachine.MoveSpeed / 12f);
     }
 
     public override void Tick(float deltaTime)

@@ -18,7 +18,7 @@ public class PlayerRollState : PlayerBaseState
 
     public override void PhysicsTick(float fixedDeltaTime)
     {
-        stateMachine.ForceReceive.MoveVelocity(fixedDeltaTime, stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed * 1.5f);
+        //stateMachine.ForceReceive.MovePosition(stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed * 1.5f, fixedDeltaTime);
     }
 
     public override void Tick(float deltaTime)

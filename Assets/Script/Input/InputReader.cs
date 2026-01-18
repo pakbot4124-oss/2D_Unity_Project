@@ -26,7 +26,7 @@ public class InputReader : MonoBehaviour, PlayerInput.IPlayerMovementActions
     public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         MovementDirection = context.ReadValue<Vector2>();
-        // Debug.Log(MovementDirection);
+        //Debug.Log("Input: " + MovementDirection);
     }
 
     public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext context)

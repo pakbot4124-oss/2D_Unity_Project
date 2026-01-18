@@ -11,11 +11,11 @@ public class PlayerWallLedgeState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(WallLedgeAnimationHash, stateMachine.CrossFadeDuration);
+        stateMachine.InputReader.JumpEvent += stateMachine.OnJump;
     }
 
     public override void PhysicsTick(float fixedDeltaTime)
     {
-        stateMachine.ForceReceive.MoveYVelocity(fixedDeltaTime, stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed);
         if (!stateMachine.WallCheckSensor.isTouchWall)
         {
             stateMachine.ReturnLocomotion();
@@ -28,5 +28,7 @@ public class PlayerWallLedgeState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.JumpEvent -= stateMachine.OnJump;
+
     }
 }

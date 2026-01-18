@@ -5,17 +5,19 @@ public class RaycastSensor
     public float castLength = 1f;
     public LayerMask layerMask = 255;
 
+
     Vector2 offset = Vector2.zero;
     Transform subjectTransform;
-
+    BoxCollider2D box;
     public enum CastDirection { Up, Down, Left, Right };
     CastDirection castDirection;
 
     RaycastHit2D hit;
 
-    public RaycastSensor(Transform transform)
+    public RaycastSensor(Transform transform, BoxCollider2D box)
     {
         subjectTransform = transform;
+        this.box = box;
     }
 
 
@@ -30,18 +32,20 @@ public class RaycastSensor
     }
 
     public bool HasDetected() => hit.collider != null;
+    public float GetDisTance() => hit.distance;
 
     public void Cast()
     {
         Vector2 worldOrigin = subjectTransform.TransformPoint(offset);
         Vector2 worldDirection = GetCastDirection();
-        Debug.DrawRay(worldOrigin, worldDirection * castLength, Color.red);
-        hit = Physics2D.Raycast(worldOrigin, worldDirection, castLength, layerMask);
-        if (hit.collider != null)
-        {
-            Debug.DrawRay(worldOrigin, worldDirection * castLength, Color.green);
-
-        }
+        hit = Physics2D.BoxCast(
+            box.bounds.center, 
+            box.bounds.size, 
+            0f, 
+            worldDirection, 
+            castLength, 
+            layerMask
+            );
     }
 
     public void SetCastDirection(CastDirection castDirection)

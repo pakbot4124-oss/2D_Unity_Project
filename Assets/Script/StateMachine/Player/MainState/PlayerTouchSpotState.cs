@@ -16,7 +16,7 @@ public class PlayerTouchSpotState : PlayerBaseState
 
     public override void PhysicsTick(float fixedDeltaTime)
     {
-        stateMachine.ForceReceive.MoveYVelocity(fixedDeltaTime, stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed);
+        //stateMachine.ForceReceive.MovePosition(stateMachine.InputReader.MovementDirection * stateMachine.MoveSpeed, fixedDeltaTime);
         if (!stateMachine.SpotCheckSensor.isTouchSpot)
         {
             stateMachine.ReturnLocomotion();

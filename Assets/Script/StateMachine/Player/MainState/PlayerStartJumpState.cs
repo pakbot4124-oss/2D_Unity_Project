@@ -10,20 +10,21 @@ public class PlayerStartJumpState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(StartJumpAnimationHash, stateMachine.CrossFadeDuration);
+        stateMachine.ForceReceive.AddJumpForce(stateMachine.JumpForce);
     }
 
     public override void PhysicsTick(float fixedDeltaTime)
     {
-
-        stateMachine.ForceReceive.Jump(stateMachine.JumpForce);
+        stateMachine.ForceReceive.MoveVelocity(GetDirByInput() * stateMachine.MoveSpeed, fixedDeltaTime);
+        if (!stateMachine.GroundCheckSensor.isGrounded)
+        {
+            stateMachine.SwitchState(new PlayerInAirState(stateMachine));
+            return;
+        }
     }
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.Rigidbody2D.linearVelocityY > 0 && !stateMachine.GroundCheckSensor.isGrounded)
-        {
-            stateMachine.SwitchState(new PlayerInAirState(stateMachine));
-        }
     }
 
     public override void Exit()
